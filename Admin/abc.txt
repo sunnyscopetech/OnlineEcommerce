@@ -1,0 +1,160 @@
+<?php
+include 'config.php';
+session_start();
+$user_id = $_SESSION['userinfo'];
+if (!isset($user_id)) {
+    header('location:login.php');
+};
+
+// Session destroy
+if (isset($_GET['logout'])) {
+    unset($user_id);
+    session_destroy('');
+    header('location:login.php');
+}
+
+?>
+<link rel="stylesheet" href="./view-order.css">
+
+<!-- fontawesome cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/
+                            DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
+                            crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
+
+        <!-- Pop-up Menu9 -->
+        <?php
+            if (isset($message)) {
+                foreach ($message as $message) {
+                    echo '<div class="message" onclick="this.remove();">' . $message . '</div>';
+                }
+            }
+            ?>
+
+<body>  
+    <!-- navbar section -->
+        <header id="header">
+            <a href="#" class="logo">Hariom Dresses</a>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="./cart-show.php"><i class="fas fa-shopping-cart">Cart</i></a></li>
+            </ul>
+        </header>
+
+        <div class="shopping-cart">
+    <div class="heading3">
+        <h1 class="heading4">Orders</h1>
+        <table>
+            <thead>
+                <th>images</th>
+                <th>name</th>
+                <th>price</th>
+                <th>quantity</th>
+                <th>total Price</th>
+                <th>action</th>
+            </thead>
+
+        <!-- display orders -->
+        <?php
+            $grand_total=0;
+                $cart_query = mysqli_query($conn, "select * from cart where user_id='$user_id'") 
+                or die('query failed');
+                if (mysqli_num_rows($cart_query) > 0) {
+                    while ($fetch_cart = mysqli_fetch_assoc($cart_query)) {
+            ?>
+            <tr>
+                <td><img src="images/<?php echo $fetch_cart['image']; ?>" height="180"></td>
+                <td><?php echo $fetch_cart['name']; ?></td>
+                <td><?php echo $fetch_cart['price']; ?>/-</td>
+                <td>
+                    <form action="" method="post">
+                        <input type="hidden" name="cart_id" value="<?php echo $fetch_cart['id']; ?>">
+                        <input type="number" min="1" name="cart_quantity" value="<?php echo $fetch_cart['quantity']; ?>">
+                        <input type="submit" name="Update_Cart" value="update" class="option-btn">
+                    </form>
+                </td>
+                <td>Rs:<?php echo $sub_total=number_format($fetch_cart['price']*$fetch_cart['quantity']);?>/-</td>
+                <td><a href="cart-show.php?remove=<?php echo $fetch_cart['id'];?>" 
+                class="delete-btn" onclick="return confirm('Remove item form Cart?');">Remove</a></td>
+            </tr>
+            <?php
+                $grand_total+=($fetch_cart['price']*$fetch_cart['quantity']);
+                };
+                };
+            ?>
+
+--------------------------------------------------------------------------------------------------->
+<?php
+include 'config.php'; // Ensure this file has your database connection details
+session_start();
+$user_id = $_SESSION['userinfo'];
+if (!isset($user_id)) {
+    header('location:login.php');
+    exit(); // Always exit after a header redirect
+}
+
+// Fetch orders from database
+$order_query = mysqli_query($conn, "SELECT * FROM `order` WHERE user_id='$user_id' ORDER BY id DESC");
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Your Order History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Email</th>
+                <th>Total Products</th>
+                <th>Total Price</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Loop through each order and display in table rows
+            while ($row = mysqli_fetch_assoc($order_query)) {
+                echo "<tr>";
+                echo "<td>" . $row["id"] . "</td>";
+                echo "<td>" . $row["name"] . "</td>";
+                echo "<td>" . $row["number"] . "</td>";
+                echo "<td>" . $row["email"] . "</td>";
+                echo "<td>" . $row["total_products"] . "</td>";
+                echo "<td>" . $row["total_price"] . "</td>";
+                echo "<td>" . $row["order_date"] . "</td>";
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+    <a href="index.php">Continue Shopping</a>
+</body>
+</html>
+
+<?php
+// Close database connection
+mysqli_close($conn);
+?>

@@ -1,0 +1,301 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    background-color:magenta;
+    /* background: url(./images/login-back1.jpg); */
+}
+:root{
+    --border:2px solid black;
+}
+
+    /* buttons css */
+.btn,
+.delete-btn,
+.option-btn,
+.btn1
+{
+    display: flex;
+    padding: 8px 25px;
+    position: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+.message
+{
+    position: sticky;
+    top: 0;left: 0;right: 0;
+    padding: 15px 10px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: black;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.btn
+{
+    background-color: aqua;
+    margin-top: 10px;
+}
+
+.cart-btn{
+    margin-top: 25px;
+    display: flex;
+    margin-left: 30rem;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    border-radius: 5px;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+}
+
+.delete-btn
+{
+    background-color: red;
+}
+.option-btn
+{
+    background-color: orange;
+}
+.btn:hover,
+.delete-btn:hover,
+.option-btn:hover
+{
+    background-color:linear-gradient(40deg, rgb(246, 43, 2) 25%,rgb(244, 196, 6) 90%);
+}
+/* navbar section */
+#header
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#header .logo
+{
+    background: linear-gradient(40deg, rgb(210, 15, 15) 25%,rgb(244, 177, 6) 90%);
+    font-family: 'Poppins';
+    text-transform: uppercase;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 2em;
+    text-decoration: none;
+    transition: 0.3s;
+}
+#header .logo:hover
+{
+    -webkit-text-stroke: 2px rgb(255, 221, 0);
+    color: rgb(255, 238, 0);
+    transform: scale(1.05);
+}
+#header ul
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#header ul li
+{
+    list-style: none;
+    margin-left: 20px;
+}
+#header ul li a{
+    font-size: 20px;
+    text-decoration: none;
+    padding: 6px 15px;
+    color:purple;
+    border-radius: 20px;
+}
+
+#header ul li a:hover
+{
+    background: linear-gradient(40deg, rgb(175, 22, 160) 25%,rgb(244, 6, 6) 90%);
+    color: white;
+}
+#header ul li a.active
+{
+    background:rgb(96, 32, 88);
+    color: white;
+}
+#header .icon-class
+{
+    position: relative;
+}
+    /* navbar section end */   
+
+    
+
+.heading
+{
+    text-align: center;
+    background: linear-gradient(153deg, rgb(42, 245, 86) 42%, rgb(234, 221, 39) 66%);
+    margin-bottom: 20px;
+    font-family: 'Poppins';
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 3px 0;
+    font-size: 40px;
+}
+.container
+{
+    /* max-width: 50rem; */
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 0 auto;
+    margin-top: 8rem;
+}
+.checkout-form form{
+    padding: 2rem;
+    border-radius:.5rem;
+    background: rgb(187, 177, 177);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+.checkout-form form .flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.3rem;
+}
+.checkout-form form .flex .inputbox{
+    flex: 1 1 25rem;
+}
+.checkout-form form .flex .inputbox input,
+.checkout-form form .flex .inputbox select{
+    width: 90%;
+    background-color: white;
+    font-size: 1.3rem;
+    color: blue;
+    border-radius: .5rem;
+    /* margin: 1rem 0; */
+    padding: 1rem 1.2rem;
+    text-transform: none;
+    /* border:black; */
+}
+.checkout-form form .flex .inputbox span{
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+}
+    /* displaying order */
+.display-order{
+    max-width: 50rem;
+    background-color: white;
+    border-radius: .5rem;
+    text-align: center;
+    padding: 1.5rem;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+.display-order span{
+    display: inline-block;
+    border-radius: .5rem;
+    background-color: black;
+    padding: .5rem 1.5rem;
+    font-size: 1.2rem;
+    color: white;
+    margin: .5rem;
+}
+.display-order span.grand-total{
+    width: 100%;
+    background-color: rgb(255, 64, 0);
+    color: white;
+    margin-top: 1rem;
+}
+    /* customer order-details */
+.order-message-container{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 80px;
+}
+.order-message-container .message-container{
+    width: 50rem;
+    background-color: white;
+    border-radius: .5rem;
+    padding: 1rem;
+    text-align: center;
+}
+.order-message-container .message-container h3{
+    font-size:35px;
+    color: black;
+}
+.order-message-container .message-container .order-detail{
+    background-color: white;
+    border-radius: .5rem;
+    padding: 1rem;
+    /* margin: 1rem 0; */
+}
+.order-message-container .message-container .order-detail span{
+    background-color: white;
+    border-radius: .5rem;
+    color: black;
+    font-size: 15px;
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    /* margin: 1rem; */
+}
+.order-message-container .message-container .order-detail span.products{
+    text-align: center;
+    background:linear-gradient(153deg, rgb(42, 245, 86) 42%, rgb(234, 221, 39) 66%);
+    margin-bottom: 20px;
+    font-family: 'Poppins';
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 3px 0;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.order-message-container .message-container .order-detail span.total{
+    display: block;
+    background:  rgb(255, 64, 0);
+    color: white;
+}
+.order-message-container .message-container .customer-details{
+    /* margin: 1.5rem 0; */
+}
+.order-message-container .message-container .customer-details p{
+    padding: 1rem 0;
+    font-size: 25px;
+    color: black;
+}
+.order-message-container .message-container .customer-details p span{
+    color: blue;
+    padding: 0 .5rem;
+    text-decoration: none;
+}
+.customer-details a{
+    display: flex;
+    padding: 8px 25px;
+    position: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+}
+.btnC{
+    display: block;
+    background:linear-gradient(153deg, rgb(42, 245, 86) 42%, rgb(234, 221, 39) 66%);
+    color: rgb(32, 27, 27);
+    font-size: 20px;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 1rem 1.2rem;
+}

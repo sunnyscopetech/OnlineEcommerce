@@ -1,0 +1,111 @@
+:root{
+    --border:2px solid black;
+    --box-shadow:0 .5rem 1rem black;
+}
+*
+{
+    font-family: 'Poppins',sans-serif;
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+    outline: none;border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+body{
+    min-height: 100vh;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:url(assets/Back-imgaes/shortkurti-back.jpg)no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+html
+{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+.message
+{
+    position: sticky;
+    top: 0;left: 0;right: 0;
+    padding: 15px 10px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: black;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 20px;
+}
+.btn,
+.delete-btn,
+.option-btn
+{
+    display: inline-block;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    border-radius: 5px;
+}
+.btn
+{
+    background-color: aqua;
+    margin-top: 10px;
+}
+.btn1
+{
+    display: block;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(0, 13, 255);
+    margin-top: 10px;
+}
+
+.delete-btn
+{
+    background-color: red;
+}
+.option-btn
+{
+    background-color: orange;
+}
+.btn:hover,
+.delete-btn:hover,
+.option-btn:hover
+{
+    background-color:linear-gradient(40deg, rgb(246, 43, 2) 25%,rgb(244, 196, 6) 90%);
+}
+
+.add-product{
+    max-width: 50rem;
+    border-radius: 5rem;
+    padding: 2rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    background: transparent;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+.add-product h3
+{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: linear-gradient(130deg, rgba(150,150,159,1) 40%, rgba(255,0,203,1) 100%);
+    text-transform: uppercase;
+    text-align: center;
+}
+.add-product .box
+{
+    padding: 1.5rem 1.4rem;
+    font-size: 1.7rem;
+    color: black;
+    border-radius: 5rem;
+    background-color: aliceblue;
+    margin: 1rem;
+}

@@ -1,0 +1,47 @@
+while ($fetch_cart = mysqli_fetch_assoc($cart_query)) {
+            ?>
+            <tr>
+                <td><img src="images/<?php echo $fetch_cart['image']; ?>" height="180"></td>
+                <td><?php echo $fetch_cart['name']; ?></td>
+                <td><?php echo $fetch_cart['price']; ?>/-</td>
+                
+                <td>
+                    <form action="" method="post">
+                        <input type="hidden" name="cart_id" value="<?php echo $fetch_cart['id']; ?>">
+                        <input type="number" min="1" name="cart_quantity" value="<?php echo $fetch_cart['quantity']; ?>">
+                        <input type="submit" name="Update_Cart" value="update" class="option-btn">
+                    </form>
+                </td>
+                
+                <td>Rs:<?php echo $sub_total=number_format($fetch_cart['price']*$fetch_cart['quantity']);?>/-</td>
+                <td><a href="cart-show.php?remove=<?php echo $fetch_cart['id'];?>" 
+                class="delete-btn" onclick="return confirm('Remove item form Cart?');">Remove</a></td>
+            </tr>
+            <?php
+                $grand_total+=($fetch_cart['price']*$fetch_cart['quantity']);
+                };
+
+--------------------------------------------------------------------------------------->
+checkout.php
+
+<div class="display-order">
+
+                    <?php
+                    $select_cart = mysqli_query($conn, "SELECT * FROM cart WHERE user_id='$user_id'");
+                    $total = 0;
+                    $grand_total = 0;
+                    if(mysqli_num_rows($select_cart) > 0){
+                        while($fetch_cart = mysqli_fetch_assoc($select_cart)){   
+                            $total_price = number_format($fetch_cart['price'] * $fetch_cart['quantity']);
+                            $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);          
+                    ?>
+                    <span><?= $fetch_cart['name']; ?>(<?= $fetch_cart['quantity']?>)</span>    
+                    <?php
+                        }
+                    } else {
+                        echo "<div class='display-order'><span>Your cart is Empty</span></div>";
+                    }
+                    ?>
+                    <span class="grand-total">Grand total: <?= $grand_total; ?></span>
+
+                </div>
